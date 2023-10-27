@@ -124,7 +124,9 @@ if __name__ == "__main__":
 
             # Sleep for 30 min (1800 sec) + random offset because of the API rate limit
             # Sleeps for 25-35 min
-            time.sleep(1800 + random.randrange(-300, 300))
+            time_to_sleep = 1800 + random.randrange(-300, 300)
+            logger.info("Sleeping for %s seconds", time_to_sleep)
+            time.sleep(time_to_sleep)
 
     except Exception as e:
         if isinstance(e, KeyboardInterrupt):
