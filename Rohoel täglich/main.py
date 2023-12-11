@@ -30,7 +30,7 @@ else:
     logging.info("Creating new database: %s", db_name)
     db = db_client[db_name]
 
-col_name = "OilPrices"
+col_name = "OilPricesDaily"
 db_collection = None
 
 
@@ -51,6 +51,12 @@ if __name__ == "__main__":
 
     logging.info("Successfully loaded data")
     logging.debug("Data: %s", response)
+
+    # delete old documents
+    if (col_name == "OilPricesDaily"):
+        logging.debug("Starting to delete old data")
+        db_collection.drop()
+        logging.debug("Deleted old data")
 
 
     logging.debug("Starting to insert data into database")
